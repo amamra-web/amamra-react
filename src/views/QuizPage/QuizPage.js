@@ -9,6 +9,7 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/basic
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import FiberManualRecord from "@material-ui/core/SvgIcon/SvgIcon";
+import {db} from 'config.js'
 
 const dashboardRoutes = [];
 
@@ -19,17 +20,18 @@ export default function QuizPage(props){
     const { ...rest } = props;
 
     //const [sessionID, setSessionID] = React.useState('');
-
     React.useEffect(() => {
-        const createQuiz = async () => {
-            const quiz = [];
-
-            const res = await fetch('https://aramara-web.firebaseio.com/quizzes/quiz2');
-
-            const data = await res.json();
-            console.log(data);
-        }
+        console.log("useEffect");
+        loadQuiz2();
     }, []);
+
+    const loadQuiz2 = async () => {
+        const itemsRef = db.ref('quizzes');
+        itemsRef.on('value', (callback) => {
+            let items = callback.val();
+            console.log(items);
+        })
+    }
 
     return(
         <div>
