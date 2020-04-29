@@ -26,10 +26,19 @@ export default function QuizPage(props){
     }, []);
 
     const loadQuiz2 = async () => {
-        const itemsRef = db.ref('quizzes');
+        var quizName = 'quiz2';
+        const itemsRef = db.ref(`quizzes/${quizName}`);
         itemsRef.on('value', (callback) => {
             let items = callback.val();
-            console.log(items);
+            for(let question in items) {
+                let questionObject = items[question];
+                console.log(questionObject.questionText)
+                let choices = questionObject.choices;
+                for(let choice in choices) {
+                    console.log(choices[choice]);
+                }
+                console.log("ANSWER IS: " + questionObject.answer);
+            }
         })
     }
 
