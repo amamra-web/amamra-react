@@ -24,7 +24,8 @@ ReactDOM.render(
       <Route path="/login-page" component={LoginPage} />
       <Route path="/" component={AnswerPage} />
       {/* <Route path="/login-page" component={LoginPage}/>
-      <Route path="/signup-page" component={SignupPage}/> */}
+      <Route path="/signup-page" component={SignupPage}/>  */}
+      <Route path="/" component={NavigationPage} />
     </Switch>
   </Router>,
   document.getElementById("root")
