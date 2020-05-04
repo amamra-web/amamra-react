@@ -22,7 +22,7 @@ ReactDOM.render(
       <Route path="/landing-page" component={LandingPage} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
-      <Route path="/" component={QuizPage} />
+      <Route path="/" component={NavigationPage} />
     </Switch>
   </Router>,
   document.getElementById("root")
