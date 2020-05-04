@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-import { auth, generateUserDocument } from "firebase";
+import { auth, generateUserDocument, provider } from "../../firebase.js";
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -21,6 +21,7 @@ const SignUp = () => {
         setPassword("");
         setDisplayName("");
     };
+    
     const onChangeHandler = event => {
         const { name, value } = event.currentTarget;
         if (name === "userEmail") {
@@ -31,6 +32,11 @@ const SignUp = () => {
             setDisplayName(value);
         }
     };
+
+    const signInWithGoogleHandler = (event) => {
+        auth.signInWithPopup(provider);
+    }
+
     return (
         <div className="mt-8">
             <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
@@ -88,7 +94,7 @@ const SignUp = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
+                    className="bg-red-500 hover:bg-red-600 w-full py-2 text-white" onClick= {(event) => {signInWithGoogleHandler(event)}}
                 >
                     Sign In with Google
                 </button>

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "@reach/router";
-import { auth } from "firebase";
-import {signInWithGoogle} from "firebase";
+import { auth, provider } from "../../firebase.js";
+import {} from "../../firebase";
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
@@ -14,6 +14,12 @@ const SignIn = () => {
             console.error("Error signing in with password and email", error);
         });
     };
+
+    const signInWithGoogleHandler = (event) => {
+        event.preventDefault();
+        auth.signInWithPopup(provider);
+        console.log(process.env.REACT_APP_API_KEY);
+    }
 
     const onChangeHandler = (event) => {
         const {name, value} = event.currentTarget;
@@ -62,7 +68,7 @@ const SignIn = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 w-full py-2 text-white" onClick= {(event) => {signInWithGoogle(event, email, password)}}>
+                    className="bg-red-500 hover:bg-red-600 w-full py-2 text-white" onClick= {(event) => {signInWithGoogleHandler(event)}}>
                     Sign in with Google
                 </button>
                 <p className="text-center my-3">

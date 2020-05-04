@@ -22,7 +22,7 @@ ReactDOM.render(
       <Route path="/landing-page" component={LandingPage} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
-      <Route path="/" component={AnswerPage} />
+      {/* <Route path="/" component={AnswerPage} /> */}
       {/* <Route path="/login-page" component={LoginPage}/>
       <Route path="/signup-page" component={SignupPage}/>  */}
       <Route path="/" component={NavigationPage} />
