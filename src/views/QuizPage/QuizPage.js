@@ -9,7 +9,6 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/basic
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import FiberManualRecord from "@material-ui/core/SvgIcon/SvgIcon";
-import {db} from 'config.js'
 
 const dashboardRoutes = [];
 
@@ -19,28 +18,28 @@ export default function QuizPage(props){
     const classes = useStyles();
     const { ...rest } = props;
 
-    //const [sessionID, setSessionID] = React.useState('');
-    React.useEffect(() => {
-        console.log("useEffect");
-        loadQuiz2();
-    }, []);
+    // //const [sessionID, setSessionID] = React.useState('');
+    // React.useEffect(() => {
+    //     console.log("useEffect");
+    //     loadQuiz2();
+    // }, []);
 
-    const loadQuiz2 = async () => {
-        var quizName = 'quiz2';
-        const itemsRef = db.ref(`quizzes/${quizName}`);
-        itemsRef.on('value', (callback) => {
-            let items = callback.val();
-            for(let question in items) {
-                let questionObject = items[question];
-                console.log(questionObject.questionText)
-                let choices = questionObject.choices;
-                for(let choice in choices) {
-                    console.log(choices[choice]);
-                }
-                console.log("ANSWER IS: " + questionObject.answer);
-            }
-        })
-    }
+    // const loadQuiz2 = async () => {
+    //     var quizName = 'quiz2';
+    //     const itemsRef = db.ref(`quizzes/${quizName}`);
+    //     itemsRef.on('value', (callback) => {
+    //         let items = callback.val();
+    //         for(let question in items) {
+    //             let questionObject = items[question];
+    //             console.log(questionObject.questionText)
+    //             let choices = questionObject.choices;
+    //             for(let choice in choices) {
+    //                 console.log(choices[choice]);
+    //             }
+    //             console.log("ANSWER IS: " + questionObject.answer);
+    //         }
+    //     })
+    // }
 
     return(
         <div>
